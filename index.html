@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transcendence Management | Boston Property &amp; Facilities Management</title>
+  <meta name="description" content="Transcendence Management provides comprehensive residential and commercial property management, construction, cleaning, and facilities services across the Greater Boston area.">
+  <meta name="keywords" content="property management Boston, facilities management Boston, construction services Boston, snow removal Boston, commercial cleaning Boston, residential services Boston, landscaping Boston">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://transcendencemanagement.com">
+  <meta property="og:title" content="Transcendence Management | Boston Property &amp; Facilities Management">
+  <meta property="og:description" content="A comprehensive solution for all your residential and commercial needs in the Greater Boston area.">
+  <meta property="og:image" content="images/logo.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal:       '#4195AF',
+              'teal-dark':'#1B4D5C',
+              'teal-deep':'#0F2F3A',
+              'teal-light':'#78B7C5',
+              gold:       '#C49A2A',
+              'gold-light':'#E8D5A3',
+              ice:        '#EFF9FB',
+              slate:      '#1A2E35',
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body:    ['"Inter"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Transcendence Management",
+    "description": "A comprehensive solution for all your residential and commercial needs.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Boston",
+      "addressRegion": "MA",
+      "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.3601,
+        "longitude": -71.0589
+      },
+      "geoRadius": "50000"
+    },
+    "serviceType": [
+      "Facilities Management",
+      "Construction Services",
+      "Commercial Cleaning",
+      "Snow Removal",
+      "Landscaping",
+      "Property Management"
+    ]
+  }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* Preloader */
+    #preloader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #0F2F3A;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity .6s ease, visibility .6s ease;
+    }
+    #preloader.hidden { opacity: 0; visibility: hidden; }
+    .loader-ring {
+      width: 48px; height: 48px;
+      border: 3px solid rgba(65,149,175,.2);
+      border-top-color: #C49A2A;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Hero Ken Burns */
+    .hero-bg {
+      animation: kenburns 25s ease-in-out infinite alternate;
+    }
+    @keyframes kenburns {
+      0%   { transform: scale(1)   translate(0, 0); }
+      100% { transform: scale(1.08) translate(-1%, -1%); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s cubic-bezier(.25,.46,.45,.94),
+                  transform .7s cubic-bezier(.25,.46,.45,.94);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.from-scale { transform: scale(.92); }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0) translateX(0) scale(1);
+    }
+
+    /* Hero text cascade */
+    .hero-fade { opacity: 0; transform: translateY(20px); animation: fadeUp .8s ease forwards; }
+    .hero-fade-1 { animation-delay: .3s; }
+    .hero-fade-2 { animation-delay: .6s; }
+    .hero-fade-3 { animation-delay: .9s; }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Portfolio hover zoom */
+    .portfolio-img {
+      transition: transform .6s cubic-bezier(.25,.46,.45,.94);
+    }
+    .portfolio-card:hover .portfolio-img {
+      transform: scale(1.06);
+    }
+    .portfolio-overlay {
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+    .portfolio-card:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    /* Gold decorative line */
+    .gold-line {
+      width: 56px; height: 2px;
+      background: #C49A2A;
+    }
+
+    /* Service card hover */
+    .service-card {
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(27,77,92,.12);
+    }
+
+    /* Services horizontal ticker */
+    .ticker-track {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      animation: ticker 40s linear infinite;
+    }
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      flex-shrink: 0;
+      width: 220px;
+      padding: 2rem 1.25rem;
+      border-radius: 1.25rem;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .ticker-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(65,149,175,.15);
+      border-radius: 1.25rem;
+      transition: border-color .3s ease;
+    }
+    .ticker-item:hover::before {
+      border-color: #C49A2A;
+    }
+    .ticker-item .ticker-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(65,149,175,.1);
+      line-height: 1;
+      position: absolute;
+      top: .75rem;
+      right: 1rem;
+      transition: color .3s ease;
+    }
+    .ticker-item:hover .ticker-num {
+      color: rgba(196,154,42,.2);
+    }
+
+    /* Nav transition */
+    #navbar {
+      transition: background .3s ease, box-shadow .3s ease, padding .3s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(15,47,58,.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,.15);
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+    }
+    #mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    /* Back to top */
+    #back-to-top {
+      opacity: 0; visibility: hidden;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+    #back-to-top.visible {
+      opacity: 1; visibility: visible;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      opacity: 0; visibility: hidden;
+      transition: opacity .3s ease, visibility .3s ease;
+    }
+    #lightbox.active {
+      opacity: 1; visibility: visible;
+    }
+    #lightbox img {
+      transform: scale(.92);
+      transition: transform .35s cubic-bezier(.25,.46,.45,.94);
+    }
+    #lightbox.active img {
+      transform: scale(1);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0F2F3A; }
+    ::-webkit-scrollbar-thumb { background: #4195AF; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #78B7C5; }
+
+    /* Stagger children */
+    .stagger > *:nth-child(1)  { transition-delay: .05s; }
+    .stagger > *:nth-child(2)  { transition-delay: .10s; }
+    .stagger > *:nth-child(3)  { transition-delay: .15s; }
+    .stagger > *:nth-child(4)  { transition-delay: .20s; }
+    .stagger > *:nth-child(5)  { transition-delay: .25s; }
+    .stagger > *:nth-child(6)  { transition-delay: .30s; }
+    .stagger > *:nth-child(7)  { transition-delay: .35s; }
+    .stagger > *:nth-child(8)  { transition-delay: .40s; }
+    .stagger > *:nth-child(9)  { transition-delay: .45s; }
+    .stagger > *:nth-child(10) { transition-delay: .50s; }
+    .stagger > *:nth-child(11) { transition-delay: .55s; }
+    .stagger > *:nth-child(12) { transition-delay: .60s; }
+
+    /* Form focus ring */
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(196,154,42,.5);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-brand-slate font-body">
+
+  <!-- ===================== PRELOADER ===================== -->
+  <div id="preloader"><div class="loader-ring"></div></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-5">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-3">
+        <span class="text-white font-display font-semibold text-lg">Transcendence<span class="text-brand-gold"> Management</span></span>
+      </a>
+      <!-- Desktop links -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
+        <li><a href="#services" class="hover:text-brand-gold transition-colors">Services</a></li>
+        <li><a href="#portfolio" class="hover:text-brand-gold transition-colors">Our Work</a></li>
+        <li><a href="#about" class="hover:text-brand-gold transition-colors">About</a></li>
+        <li><a href="#contact" class="bg-brand-gold text-brand-slate px-5 py-2 rounded-full font-semibold hover:bg-brand-gold-light transition-colors">Contact</a></li>
+      </ul>
+      <!-- Mobile toggle -->
+      <button id="menu-toggle" class="md:hidden text-white text-xl" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Drawer -->
+  <div id="mobile-menu" class="fixed inset-y-0 right-0 w-72 bg-brand-teal-deep z-50 flex flex-col p-8 pt-20">
+    <button id="menu-close" class="absolute top-6 right-6 text-white text-2xl" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <a href="#home"     class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">Home</a>
+    <a href="#services" class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">Services</a>
+    <a href="#portfolio" class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">Our Work</a>
+    <a href="#about"    class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">About</a>
+    <a href="#contact"  class="mt-6 bg-brand-gold text-brand-slate text-center py-3 rounded-full font-semibold hover:bg-brand-gold-light transition-colors mobile-link">Contact Us</a>
+  </div>
+  <!-- Mobile overlay -->
+  <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="home" class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <!-- BG image -->
+    <div class="absolute inset-0">
+      <img src="images/full-home-image.JPEG" alt="Professionally managed property in Greater Boston" class="hero-bg w-full h-full object-cover">
+    </div>
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-teal-deep/80 via-brand-teal-dark/60 to-brand-slate/80"></div>
+    <!-- Content -->
+    <div class="relative z-10 text-center px-6 max-w-3xl">
+      <h1 class="hero-fade hero-fade-1 font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+        Transcendence<br><span class="text-brand-gold">Management</span>
+      </h1>
+      <p class="hero-fade hero-fade-2 text-white/80 text-lg sm:text-xl font-light max-w-xl mx-auto mb-8">
+        A comprehensive solution for all your residential and commercial needs
+      </p>
+      <div class="hero-fade hero-fade-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#contact" class="bg-brand-gold hover:bg-yellow-600 text-brand-slate font-semibold px-8 py-3.5 rounded-full transition-colors shadow-lg">
+          Get Your Free Estimate
+        </a>
+        <a href="#portfolio" class="border border-white/30 text-white hover:border-brand-gold hover:text-brand-gold px-8 py-3.5 rounded-full transition-colors font-medium">
+          View Our Work
+        </a>
+      </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <i class="fa-solid fa-chevron-down text-white/40 text-lg"></i>
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" class="py-20 lg:py-28 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14 reveal">
+        <div class="gold-line mx-auto mb-4"></div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-brand-slate mb-3">What We Do</h2>
+        <p class="text-brand-teal-dark/70 max-w-md mx-auto">Serving the Greater Boston area with quality you can count on</p>
+      </div>
+    </div>
+
+    <!-- Horizontal auto-scrolling ticker -->
+    <div class="relative reveal">
+      <!-- Fade edges -->
+      <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+      <div class="ticker-track" id="services-ticker">
+        <!-- Row 1 (original) -->
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">01</span>
+          <i class="fa-solid fa-leaf text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Environmental &amp; Landscaping</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">02</span>
+          <i class="fa-solid fa-list-check text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Project Management</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">03</span>
+          <i class="fa-solid fa-building text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Facilities Management</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">04</span>
+          <i class="fa-solid fa-helmet-safety text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Construction Services</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">05</span>
+          <i class="fa-solid fa-broom text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Post Construction Cleanup</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">06</span>
+          <i class="fa-solid fa-faucet text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Plumbing</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">07</span>
+          <i class="fa-solid fa-bolt text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Cabling &amp; Electrical</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">08</span>
+          <i class="fa-solid fa-snowflake text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Snow Removal</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">09</span>
+          <i class="fa-solid fa-pump-soap text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Comprehensive Cleaning</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">10</span>
+          <i class="fa-solid fa-shield-virus text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Disinfecting Services</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">11</span>
+          <i class="fa-solid fa-city text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Commercial Cleaning</h3>
+        </div>
+        <div class="ticker-item bg-brand-ice text-center">
+          <span class="ticker-num">12</span>
+          <i class="fa-solid fa-hand-sparkles text-brand-teal text-2xl mb-3"></i>
+          <h3 class="font-semibold text-sm text-brand-slate">Terminal Cleaning</h3>
+        </div>
+        <!-- Duplicated for seamless loop (injected by JS) -->
+      </div>
+    </div>
+
+    <!-- Snow Removal Rate Sheet -->
+    <div class="max-w-7xl mx-auto px-6 mt-14 text-center reveal">
+      <a href="pdfs/2025-2026-emergency-response-snow-removal-rate-sheet.pdf" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 text-brand-teal hover:text-brand-gold font-medium transition-colors text-sm">
+        <i class="fa-solid fa-file-pdf text-lg"></i>
+        View Our Emergency Response &amp; Snow Removal Rate Sheet
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== PORTFOLIO ===================== -->
+  <section id="portfolio" class="py-20 lg:py-28 bg-brand-ice/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <div class="gold-line mx-auto mb-4"></div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-brand-slate mb-3">Our Work</h2>
+        <p class="text-brand-teal-dark/70 max-w-md mx-auto">Every project tells a story from vision to reality</p>
+      </div>
+
+      <!-- Featured: Kitchen Remodel -->
+      <div class="mb-6 reveal">
+        <div class="portfolio-card relative overflow-hidden rounded-3xl cursor-pointer aspect-[16/7]" onclick="openLightbox(this)">
+          <img src="images/full-kitchen-remodel-completion.jpg"
+               alt="Complete kitchen remodel showcasing modern finishes in a Boston area home"
+               class="portfolio-img w-full h-full object-cover">
+          <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-brand-slate/70 to-transparent flex items-end p-8">
+            <div>
+              <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase">Featured Project</span>
+              <h3 class="text-white font-display text-2xl font-bold mt-1">Full Kitchen Remodel</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Bathroom Before/After -->
+        <div class="reveal">
+          <div class="portfolio-card relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" onclick="openLightbox(this)">
+            <img src="images/bathroom-remodel-process.JPEG"
+                 alt="Bathroom renovation in progress showing structural updates"
+                 class="portfolio-img w-full h-full object-cover">
+            <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-brand-slate/70 to-transparent flex items-end p-6">
+              <div>
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase">The Process</span>
+                <h3 class="text-white font-display text-lg font-bold mt-1">Bathroom Remodel</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="portfolio-card relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" onclick="openLightbox(this)">
+            <img src="images/bathroom-remodel-completion.JPEG"
+                 alt="Completed bathroom remodel with modern tile and fixtures"
+                 class="portfolio-img w-full h-full object-cover">
+            <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-brand-slate/70 to-transparent flex items-end p-6">
+              <div>
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase">The Result</span>
+                <h3 class="text-white font-display text-lg font-bold mt-1">Bathroom Remodel</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kitchen completion alt -->
+        <div class="reveal">
+          <div class="portfolio-card relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" onclick="openLightbox(this)">
+            <img src="images/kitchen-remodel-completion.JPG"
+                 alt="Kitchen remodel final reveal with new cabinetry and countertops"
+                 class="portfolio-img w-full h-full object-cover">
+            <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-brand-slate/70 to-transparent flex items-end p-6">
+              <div>
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase">The Result</span>
+                <h3 class="text-white font-display text-lg font-bold mt-1">Kitchen Transformation</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tile Before/After -->
+        <div class="reveal">
+          <div class="portfolio-card relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" onclick="openLightbox(this)">
+            <img src="images/bathtub-tile-process.jpg"
+                 alt="Bathtub tile installation in progress"
+                 class="portfolio-img w-full h-full object-cover">
+            <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-brand-slate/70 to-transparent flex items-end p-6">
+              <div>
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase">The Process</span>
+                <h3 class="text-white font-display text-lg font-bold mt-1">Custom Tile Work</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="portfolio-card relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" onclick="openLightbox(this)">
+            <img src="images/bathtub-tile-finished-product.jpg"
+                 alt="Finished bathtub tile work with clean professional installation"
+                 class="portfolio-img w-full h-full object-cover">
+            <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-brand-slate/70 to-transparent flex items-end p-6">
+              <div>
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase">The Result</span>
+                <h3 class="text-white font-display text-lg font-bold mt-1">Custom Tile Work</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Roofing -->
+        <div class="reveal">
+          <div class="portfolio-card relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]" onclick="openLightbox(this)">
+            <img src="images/roofing-process.JPG"
+                 alt="Roofing project underway on a residential property"
+                 class="portfolio-img w-full h-full object-cover">
+            <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-brand-slate/70 to-transparent flex items-end p-6">
+              <div>
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase">In Progress</span>
+                <h3 class="text-white font-display text-lg font-bold mt-1">Roofing</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="reveal from-left">
+          <div class="aspect-[4/5] rounded-3xl bg-brand-ice overflow-hidden relative">
+            <!-- Placeholder for owner photo -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-brand-teal/40">
+              <i class="fa-solid fa-user text-6xl mb-4"></i>
+              <span class="text-sm font-medium">Owner Photo</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal from-right">
+          <div class="gold-line mb-4"></div>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-brand-slate mb-4">Meet the Owner</h2>
+          <p class="text-brand-teal-dark/70 leading-relaxed mb-6">
+            With years of hands on experience across construction, facilities management, and commercial services in the Greater Boston area, the founder of Transcendence Management built this company on a simple belief: every property deserves exceptional care and every client deserves a partner they can trust.
+          </p>
+          <p class="text-brand-teal-dark/70 leading-relaxed mb-8">
+            More details coming soon.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-2 text-brand-gold font-semibold hover:gap-3 transition-all">
+            Get in Touch <i class="fa-solid fa-arrow-right text-sm"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="py-20 lg:py-28 bg-brand-teal-deep text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16 reveal">
+        <div class="gold-line mx-auto mb-4"></div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold mb-3">Let's Work Together</h2>
+        <p class="text-white/60 max-w-md mx-auto">Ready to start your next project? Reach out for a free estimate.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+        <!-- Form -->
+        <div class="lg:col-span-3 reveal from-left">
+          <form id="contact-form" class="space-y-5" onsubmit="handleSubmit(event)">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label for="name" class="block text-sm font-medium text-white/70 mb-1.5">Name</label>
+                <input type="text" id="name" name="name" required
+                       class="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 transition-all"
+                       placeholder="Your name">
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-white/70 mb-1.5">Phone</label>
+                <input type="tel" id="phone" name="phone"
+                       class="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 transition-all"
+                       placeholder="(617) 000 0000">
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-white/70 mb-1.5">Email</label>
+              <input type="email" id="email" name="email" required
+                     class="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 transition-all"
+                     placeholder="you@example.com">
+            </div>
+            <div>
+              <label for="service" class="block text-sm font-medium text-white/70 mb-1.5">Service Needed</label>
+              <select id="service" name="service"
+                      class="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-white transition-all appearance-none">
+                <option value="" class="text-brand-slate">Select a service</option>
+                <option value="landscaping" class="text-brand-slate">Environmental &amp; Landscaping</option>
+                <option value="project-mgmt" class="text-brand-slate">Project Management</option>
+                <option value="facilities" class="text-brand-slate">Facilities Management</option>
+                <option value="construction" class="text-brand-slate">Construction Services</option>
+                <option value="post-construction" class="text-brand-slate">Post Construction Cleanup</option>
+                <option value="plumbing" class="text-brand-slate">Plumbing</option>
+                <option value="electrical" class="text-brand-slate">Cabling &amp; Electrical</option>
+                <option value="snow" class="text-brand-slate">Snow Removal</option>
+                <option value="cleaning" class="text-brand-slate">Comprehensive Cleaning</option>
+                <option value="disinfecting" class="text-brand-slate">Disinfecting Services</option>
+                <option value="commercial-cleaning" class="text-brand-slate">Commercial Cleaning</option>
+                <option value="terminal-cleaning" class="text-brand-slate">Terminal Cleaning</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-white/70 mb-1.5">Message</label>
+              <textarea id="message" name="message" rows="4"
+                        class="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 text-white placeholder-white/30 transition-all resize-none"
+                        placeholder="Tell us about your project"></textarea>
+            </div>
+            <button type="submit"
+                    class="w-full sm:w-auto bg-brand-gold hover:bg-yellow-600 text-brand-slate font-semibold px-10 py-3.5 rounded-full transition-colors shadow-lg">
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Info -->
+        <div class="lg:col-span-2 reveal from-right space-y-10">
+          <!-- Hours -->
+          <div>
+            <h3 class="font-display text-xl font-bold mb-4 flex items-center gap-2">
+              <i class="fa-regular fa-clock text-brand-gold"></i> Hours of Operation
+            </h3>
+            <ul class="space-y-2 text-white/70 text-sm">
+              <li class="flex justify-between"><span>Monday to Friday</span><span class="text-white">7:00 AM to 6:00 PM</span></li>
+              <li class="flex justify-between"><span>Saturday</span><span class="text-white">8:00 AM to 4:00 PM</span></li>
+              <li class="flex justify-between"><span>Sunday</span><span class="text-brand-gold">Emergency Calls Only</span></li>
+            </ul>
+          </div>
+          <!-- Contact info -->
+          <div>
+            <h3 class="font-display text-xl font-bold mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-phone text-brand-gold"></i> Reach Us Directly
+            </h3>
+            <ul class="space-y-3 text-sm">
+              <li>
+                <a href="tel:+16170000000" class="text-white/70 hover:text-brand-gold transition-colors flex items-center gap-3">
+                  <i class="fa-solid fa-phone w-4"></i> (617) 000 0000
+                </a>
+              </li>
+              <li>
+                <a href="mailto:contact@transcendencemanagement.com" class="text-white/70 hover:text-brand-gold transition-colors flex items-center gap-3">
+                  <i class="fa-solid fa-envelope w-4"></i> contact@transcendencemanagement.com
+                </a>
+              </li>
+              <li>
+                <span class="text-white/70 flex items-center gap-3">
+                  <i class="fa-solid fa-location-dot w-4"></i> Greater Boston Area, MA
+                </span>
+              </li>
+            </ul>
+          </div>
+          <!-- Social -->
+          <div>
+            <h3 class="font-display text-xl font-bold mb-4">Follow Us</h3>
+            <div class="flex gap-4">
+              <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-brand-gold hover:text-brand-slate transition-all">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-brand-gold hover:text-brand-slate transition-all">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-brand-gold hover:text-brand-slate transition-all">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-brand-slate py-8">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
+      <p>&copy; 2026 Transcendence Management. All rights reserved.</p>
+      <p>Serving the Greater Boston Area</p>
+    </div>
+  </footer>
+
+  <!-- ===================== BACK TO TOP ===================== -->
+  <button id="back-to-top" onclick="window.scrollTo({top:0})" aria-label="Back to top"
+          class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-brand-gold text-brand-slate shadow-lg flex items-center justify-center hover:bg-yellow-600 transition-colors">
+    <i class="fa-solid fa-chevron-up text-sm"></i>
+  </button>
+
+  <!-- ===================== LIGHTBOX ===================== -->
+  <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-6" onclick="closeLightbox()">
+    <button class="absolute top-6 right-6 text-white/70 hover:text-white text-3xl transition-colors" aria-label="Close lightbox">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[90vh] rounded-2xl object-contain shadow-2xl">
+  </div>
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script>
+    /* Preloader */
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').classList.add('hidden');
+    });
+
+    /* Services ticker: clone items for seamless infinite scroll */
+    (function() {
+      const track = document.getElementById('services-ticker');
+      const items = Array.from(track.children);
+      items.forEach(item => {
+        const clone = item.cloneNode(true);
+        track.appendChild(clone);
+      });
+    })();
+
+    /* Navbar scroll */
+    const navbar = document.getElementById('navbar');
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 60;
+      navbar.classList.toggle('scrolled', scrolled);
+      navbar.style.padding = scrolled ? '0.75rem 0' : '';
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    });
+
+    /* Mobile menu */
+    const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      overlay.classList.remove('hidden');
+    });
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      overlay.classList.add('hidden');
+    }
+    document.getElementById('menu-close').addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    /* Scroll reveal (Intersection Observer) */
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    /* Lightbox */
+    function openLightbox(card) {
+      const img = card.querySelector('img');
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    /* Contact form handler (placeholder) */
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Message Sent!';
+        btn.classList.remove('bg-brand-gold', 'hover:bg-yellow-600');
+        btn.classList.add('bg-green-500');
+        e.target.reset();
+        setTimeout(() => {
+          btn.textContent = 'Send Message';
+          btn.disabled = false;
+          btn.classList.add('bg-brand-gold', 'hover:bg-yellow-600');
+          btn.classList.remove('bg-green-500');
+        }, 3000);
+      }, 1000);
+    }
+
+    /* Active nav link highlight on scroll */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#navbar a[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) current = section.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('text-brand-gold');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('text-brand-gold');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
