@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Transcendence Management | Boston Property &amp; Facilities Management</title>
-  <meta name="description" content="Transcendence Management provides comprehensive residential and commercial property management, construction, cleaning, and facilities services across the Greater Boston area.">
-  <meta name="keywords" content="property management Boston, facilities management Boston, construction services Boston, snow removal Boston, commercial cleaning Boston, residential services Boston, landscaping Boston">
+  <meta name="description" content="Transcendence Management provides comprehensive residential and commercial property management, construction, renovations, plumbing, electrical, cleaning, landscaping, snow removal, and facilities services across the Greater Boston area. Free estimates available.">
+  <meta name="keywords" content="property management Boston, facilities management Boston, construction services Boston, snow removal Boston, commercial cleaning Boston, residential services Boston, landscaping Boston, kitchen remodel Boston, bathroom renovation Boston, roofing Boston, plumbing services Boston, electrical services Boston, disinfecting services Boston, post construction cleanup Boston">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://transcendencemanagement.com">
   <meta property="og:title" content="Transcendence Management | Boston Property &amp; Facilities Management">
-  <meta property="og:description" content="A comprehensive solution for all your residential and commercial needs in the Greater Boston area.">
+  <meta property="og:description" content="Full-service property management, construction, renovations, cleaning, and facilities services across the Greater Boston area. Free estimates available.">
   <meta property="og:image" content="images/logo.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -55,7 +55,8 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Transcendence Management",
-    "description": "A comprehensive solution for all your residential and commercial needs.",
+    "telephone": "+12035497400",
+    "description": "Full-service property management, construction, renovations, cleaning, and facilities services in the Greater Boston area.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Boston",
@@ -283,6 +284,75 @@
       outline: none;
       box-shadow: 0 0 0 2px rgba(196,154,42,.5);
     }
+
+    /* Gallery Slideshow */
+    .gallery-slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.5rem;
+    }
+    .gallery-track {
+      display: flex;
+      transition: transform .6s cubic-bezier(.25,.46,.45,.94);
+    }
+    .gallery-slide {
+      min-width: 100%;
+      position: relative;
+    }
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(26,46,53,.7), transparent);
+    }
+    .gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(4px);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      transition: background .3s ease;
+      z-index: 5;
+    }
+    .gallery-btn:hover {
+      background: rgba(196,154,42,.6);
+    }
+    .gallery-btn.prev { left: 1rem; }
+    .gallery-btn.next { right: 1rem; }
+    .gallery-dots {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .gallery-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(65,149,175,.3);
+      border: none;
+      cursor: pointer;
+      transition: background .3s ease;
+    }
+    .gallery-dot.active {
+      background: #C49A2A;
+    }
   </style>
 </head>
 
@@ -300,9 +370,11 @@
       </a>
       <!-- Desktop links -->
       <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
+        <li><a href="#about" class="hover:text-brand-gold transition-colors">About</a></li>
         <li><a href="#services" class="hover:text-brand-gold transition-colors">Services</a></li>
         <li><a href="#portfolio" class="hover:text-brand-gold transition-colors">Our Work</a></li>
-        <li><a href="#about" class="hover:text-brand-gold transition-colors">About</a></li>
+        <li><a href="#gallery" class="hover:text-brand-gold transition-colors">Gallery</a></li>
+        <li><a href="#founder" class="hover:text-brand-gold transition-colors">Meet the Founder</a></li>
         <li><a href="#contact" class="bg-brand-gold text-brand-slate px-5 py-2 rounded-full font-semibold hover:bg-brand-gold-light transition-colors">Contact</a></li>
       </ul>
       <!-- Mobile toggle -->
@@ -318,9 +390,11 @@
       <i class="fa-solid fa-xmark"></i>
     </button>
     <a href="#home"     class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">Home</a>
+    <a href="#about"    class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">About</a>
     <a href="#services" class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">Services</a>
     <a href="#portfolio" class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">Our Work</a>
-    <a href="#about"    class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">About</a>
+    <a href="#gallery"  class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">Gallery</a>
+    <a href="#founder"  class="text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold transition-colors mobile-link">Meet the Founder</a>
     <a href="#contact"  class="mt-6 bg-brand-gold text-brand-slate text-center py-3 rounded-full font-semibold hover:bg-brand-gold-light transition-colors mobile-link">Contact Us</a>
   </div>
   <!-- Mobile overlay -->
@@ -354,6 +428,17 @@
     <!-- Scroll indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
       <i class="fa-solid fa-chevron-down text-white/40 text-lg"></i>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT (Snapshot) ===================== -->
+  <section id="about" class="py-16 lg:py-20 bg-brand-ice">
+    <div class="max-w-4xl mx-auto px-6 text-center reveal">
+      <div class="gold-line mx-auto mb-4"></div>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-brand-slate mb-4">About Transcendence Management</h2>
+      <p class="text-brand-teal-dark/70 text-lg leading-relaxed max-w-3xl mx-auto">
+        Transcendence Management is a full-service property and facilities management company serving the Greater Boston area. We specialize in construction, renovations, plumbing, electrical, landscaping, snow removal, commercial cleaning, and disinfecting services for both residential and commercial clients. From start to finish, we deliver quality craftsmanship you can count on.
+      </p>
     </div>
   </section>
 
@@ -582,8 +667,40 @@
     </div>
   </section>
 
-  <!-- ===================== ABOUT ===================== -->
-  <section id="about" class="py-20 lg:py-28 bg-white">
+  <!-- ===================== GALLERY ===================== -->
+  <section id="gallery" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-12 reveal">
+        <div class="gold-line mx-auto mb-4"></div>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-brand-slate mb-3">Gallery</h2>
+        <p class="text-brand-teal-dark/70 max-w-md mx-auto">A closer look at our projects</p>
+      </div>
+      <div class="reveal">
+        <div class="gallery-slider" id="gallery-slider">
+          <div class="gallery-track" id="gallery-track">
+            <div class="gallery-slide aspect-[16/9]">
+              <img src="images/kitchen-remodel-completion.JPG" alt="Kitchen Transformation by Transcendence Management">
+              <div class="gallery-caption">
+                <h3 class="text-white font-display text-xl font-bold">Kitchen Transformation</h3>
+              </div>
+            </div>
+            <div class="gallery-slide aspect-[16/9]">
+              <img src="images/roofing-process.JPG" alt="Roofing project by Transcendence Management">
+              <div class="gallery-caption">
+                <h3 class="text-white font-display text-xl font-bold">Roofing</h3>
+              </div>
+            </div>
+          </div>
+          <button class="gallery-btn prev" aria-label="Previous slide" onclick="galleryPrev()"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="gallery-btn next" aria-label="Next slide" onclick="galleryNext()"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="gallery-dots" id="gallery-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MEET THE FOUNDER ===================== -->
+  <section id="founder" class="py-20 lg:py-28 bg-brand-ice/50">
     <div class="max-w-5xl mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div class="reveal from-left">
@@ -597,7 +714,7 @@
         </div>
         <div class="reveal from-right">
           <div class="gold-line mb-4"></div>
-          <h2 class="font-display text-3xl sm:text-4xl font-bold text-brand-slate mb-4">Meet the Owner</h2>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-brand-slate mb-4">Meet the Founder</h2>
           <h3 class="font-display text-xl text-brand-gold font-semibold mb-4">Jermaine Clarke</h3>
           <p class="text-brand-teal-dark/70 leading-relaxed mb-6">
             With years of hands on experience across construction, facilities management, building automation systems, and commercial services in the Greater Boston area, Jermaine Clarke built Transcendence Management on a simple belief, every property deserves exceptional care and every client deserves a partner they can trust. From overseeing complex renovations to providing reliable maintenance, Jermaine's commitment to quality and client satisfaction is the driving force behind Transcendence Management's success. When he's not managing projects, you can find him managing the Faulkner Hospital's facilities and futhering his education in smart building technologies.
@@ -733,9 +850,16 @@
 
   <!-- ===================== FOOTER ===================== -->
   <footer class="bg-brand-slate py-8">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
-      <p>&copy; 2026 Transcendence Management. All rights reserved.</p>
-      <p>Serving the Greater Boston Area</p>
+    <div class="max-w-7xl mx-auto px-6 flex flex-col items-center gap-4 text-sm text-white/40">
+      <div class="flex flex-col sm:flex-row items-center justify-between w-full gap-4">
+        <p>&copy; 2026 Transcendence Management. All rights reserved.</p>
+        <p>Serving the Greater Boston Area</p>
+      </div>
+      <a href="pdfs/2025-2026-emergency-response-snow-removal-rate-sheet.pdf" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 text-white/50 hover:text-brand-gold transition-colors">
+        <i class="fa-solid fa-file-pdf"></i>
+        Emergency Response &amp; Snow Removal Rate Sheet
+      </a>
     </div>
   </footer>
 
@@ -845,6 +969,45 @@
           btn.classList.remove('bg-green-500');
         }, 3000);
       }, 1000);
+    }
+
+    /* Gallery slideshow */
+    let galleryIndex = 0;
+    const galleryTrack = document.getElementById('gallery-track');
+    const gallerySlides = galleryTrack ? galleryTrack.children.length : 0;
+    const dotsContainer = document.getElementById('gallery-dots');
+
+    // Build dots
+    if (dotsContainer && gallerySlides) {
+      for (let i = 0; i < gallerySlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.addEventListener('click', () => galleryGoTo(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function galleryGoTo(idx) {
+      galleryIndex = idx;
+      galleryTrack.style.transform = 'translateX(-' + (galleryIndex * 100) + '%)';
+      document.querySelectorAll('.gallery-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === galleryIndex);
+      });
+    }
+    function galleryNext() {
+      galleryGoTo((galleryIndex + 1) % gallerySlides);
+    }
+    function galleryPrev() {
+      galleryGoTo((galleryIndex - 1 + gallerySlides) % gallerySlides);
+    }
+
+    // Auto-advance every 5s
+    let galleryTimer = setInterval(galleryNext, 5000);
+    const sliderEl = document.getElementById('gallery-slider');
+    if (sliderEl) {
+      sliderEl.addEventListener('mouseenter', () => clearInterval(galleryTimer));
+      sliderEl.addEventListener('mouseleave', () => { galleryTimer = setInterval(galleryNext, 5000); });
     }
 
     /* Active nav link highlight on scroll */
